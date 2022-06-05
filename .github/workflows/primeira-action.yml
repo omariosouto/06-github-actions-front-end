@@ -8,6 +8,7 @@ on:
   pull_request:
     branches: [ "main" ]
 
+
 # Definindo o que queremos executar
 jobs:
     exemplo: # Job: exemplo
