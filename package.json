@@ -16,8 +16,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "deploy:prod": "yarn build && ls -la && npx vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN --prod",
-    "deploy": "yarn build && ls -la && npx vercel ./build --confirm --no-clipboard"
+    "deploy:prod": "yarn build && cd ./build && npx vercel --confirm --no-clipboard --token=$VERCEL_TOKEN --prod"
   },
   "devDependencies": {
     "eslint": "8.17.0",
