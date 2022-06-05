@@ -1,0 +1,43 @@
+name: "CI (Integração Continua): Main Workflow"
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Installation
+        run: yarn install
+      - name: Run Linter
+        run: yarn lint
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Installation
+        run: yarn install
+      - name: Run Preview Deployment
+        run: yarn deploy:preview
+  test_e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.0
+          cache: 'yarn'
+      # https://docs.cypress.io/guides/continuous-integration/github-actions#Testing-in-Chrome-and-Firefox-with-Cypress-Docker-Images
+      - name: Cypress
+        uses: cypress-io/github-action@v4
+        with: 
+          browser: chrome
