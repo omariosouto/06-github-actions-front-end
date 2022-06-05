@@ -6,7 +6,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "a1.3" ]
 
 
 # Definindo o que queremos executar
