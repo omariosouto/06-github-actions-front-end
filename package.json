@@ -16,13 +16,14 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "deploy:prod": "yarn build && npx vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN --prod",
+    "deploy:prod": "yarn build && ls -la && npx vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN --prod",
     "deploy": "yarn build && ls -la && npx vercel ./build --confirm --no-clipboard"
   },
   "devDependencies": {
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "vercel": "^25.0.0"
   }
 }
