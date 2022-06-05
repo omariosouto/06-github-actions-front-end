@@ -17,8 +17,5 @@ jobs:
       - name: Run Deploy
         run: | 
           yarn install
-          ls -la
-          yarn build
-          ls -la
           yarn deploy:prod
 
