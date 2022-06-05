@@ -1,0 +1,25 @@
+name: "CI (Integração Continua): Primeira Action"
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Ativa esse fluxo de trabalho para cada push ou pull que aconetcer apontando para a branch "main"
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: [opened, synchronize]
+
+
+# Definindo o que queremos executar
+jobs:
+  exemplo: # Job: exemplo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a list files command
+      - name: Run a list files
+        run: ls -la
